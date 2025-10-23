@@ -1,11 +1,84 @@
-<div align="center">
+# Gemini Sports Club
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Gemini Sports Club은 한국 야구, NBA, 영국 축구를 위한 AI 기반 스포츠 분석 및 픽을 제공하는 독점적인 가상 소셜 카지노 클럽입니다. 이 애플리케이션은 사용자 참여와 유지를 유도하기 위해 인앱 포인트 시스템과 인터랙티브한 룰렛, 슬롯 미니게임을 특징으로 합니다.
 
-  <h1>Built with AI Studio</h2>
+## ✨ 주요 기능
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+-   **AI 기반 분석:** Google Gemini API가 생성한 상세한 경기 분석을 받아보세요.
+-   **프리미엄 분석:** 프리미엄 회원을 위한 더 깊이 있는 AI 심층 전략 분석 기능을 제공합니다.
+-   **실시간 배당률 업데이트:** 경기 배당률이 실시간으로 변동되며, 시각적 효과를 통해 사용자에게 즉각적인 피드백을 제공합니다.
+-   **안정적인 페이지 이동:** React Router를 사용한 SPA(Single Page Application)로, 부드러운 화면 전환을 제공합니다.
+-   **경기 상세 페이지:** 각 경기에 대한 모든 정보(팀, 배당률, AI 분석)를 한 곳에서 볼 수 있는 전용 페이지를 제공합니다.
+-   **사용자 인증:** 이메일/비밀번호를 통한 **로그인** 및 역할 기반(일반, 프리미엄, 관리자) 접근 제어를 지원합니다.
+-   **가상 화폐:** 앱 내에서 "골드"를 획득하고 사용할 수 있습니다.
+-   **베팅 시스템:** 경기 상세 페이지에서 가상 화폐 '골드'를 사용하여 베팅하고, 프로필 페이지에서 베팅 내역을 확인할 수 있습니다.
+-   **이벤트 페이지:** 진행중인 다양한 프로모션과 혜택을 확인할 수 있습니다.
+-   **미니게임:** 데일리 룰렛과 슬롯머신 게임을 즐길 수 있습니다.
+-   **강력한 관리자 패널:** 관리자가 사용자(생성, 수정, 삭제) 및 베팅(결과 처리, 삭제)을 직접 관리할 수 있는 완벽한 CRUD 기능을 제공합니다.
+-   **반응형 디자인:** 데스크톱과 모바일 기기 모두에 최적화된 고급스러운 다크 테마 UI입니다.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## 🚀 기술 스택
 
-</div>
+-   **프론트엔드:** [React 19](https://react.dev/) (with TypeScript)
+-   **스타일링:** [Tailwind CSS](https://tailwindcss.com/)
+-   **AI:** [Google Gemini API](https://ai.google.dev/)
+-   **네비게이션:** **React Router (`HashRouter`)**
+-   **데이터 소싱:** 외부 스포츠 API 연동 시뮬레이션
+-   **클라이언트 DB / 캐시:** 브라우저 `localStorage`
+
+## ⚙️ 시작하기
+
+이 애플리케이션은 환경 변수를 안전하게 처리할 수 있는 브라우저 기반 개발 환경에서 실행되도록 설계되었습니다.
+
+### 사전 요구사항
+
+-   최신 웹 브라우저 (Chrome, Firefox, Safari, Edge).
+-   구성된 **Google Gemini API 키**.
+
+### 테스트 계정
+
+-   **관리자:** `admin@test.com` (pw: `password123`)
+-   **프리미엄:** `premium@test.com` (pw: `password123`)
+-   **일반:** `user@test.com` (pw: `password123`)
+
+---
+
+## 🎨 에셋(이미지) 관리 가이드
+
+프로젝트에 실제 팀 로고나 이벤트 배너 이미지를 추가하는 방법은 아래의 가이드 문서를 참고해주세요.
+-   **[➡️ 에셋 관리 가이드 바로가기](./ASSETS_GUIDE.md)**
+
+## 🕹️ 문제 해결
+
+프로젝트 실행 중 문제가 발생하면 먼저 아래의 트러블슈팅 가이드를 확인해주세요.
+-   **[➡️ 트러블슈팅 가이드 바로가기](./TROUBLESHOOTING.md)**
+
+---
+
+## 🏛️ 아키텍처 기술 문서
+
+### 1. 개요
+
+Gemini Sports Club은 **외부 API를 통해 실제 스포츠 데이터를 가져오는 것을 시뮬레이션**하는 단일 페이지 애플리케이션(SPA)입니다. Google Gemini AI를 활용하여 경기 분석을 제공하며, 사용자 데이터와 AI 분석 결과 캐시는 브라우저의 `localStorage`에 저장하여 클라이언트 측에서 모든 로직을 처리합니다.
+
+### 2. 핵심 기술
+
+-   **프론트엔드 라이브러리:** **React 19**
+-   **AI 통합:** **Google Gemini API (`@google/genai`)**
+-   **네비게이션:** `react-router-dom`의 `HashRouter`를 사용하여 URL 기반의 안정적인 SPA 네비게이션을 구현합니다.
+-   **스타일링:** **Tailwind CSS**
+-   **데이터 관리:**
+    -   **경기 데이터:** `services/realtimeDataService.ts`가 외부 API 호출을 시뮬레이션하여 최신 경기 정보를 제공합니다.
+    -   **사용자 데이터 및 인증:** `services/localBackend.ts`가 `localStorage`를 사용하여 모든 사용자 정보와 현재 로그인 세션을 관리합니다.
+
+### 3. 인증 흐름
+
+1.  **초기화:** 앱 로드 시, `AuthProvider`가 `localStorage`의 세션을 확인하여 현재 로그인된 사용자가 있는지 판별합니다.
+2.  **보호된 경로 (Protected Route):** 사용자가 로그인하지 않은 상태에서 메인 앱 페이지(`/`)에 접근하려고 하면, `ProtectedRoute` 컴포넌트가 이를 감지하여 자동으로 `/login` 페이지로 리디렉션합니다.
+3.  **로그인:** 사용자가 `LoginPage`에서 성공적으로 로그인하면, 세션이 `localStorage`에 저장되고 `AuthProvider`의 상태가 업데이트됩니다. 이후 사용자는 메인 앱의 모든 기능에 접근할 수 있습니다.
+
+### 4. 향후 개선 및 확장성
+
+현재 아키텍처는 실제 데이터 연동을 시뮬레이션하는 고급 프로토타입입니다. 프로덕션 환경으로 확장하기 위한 상세한 백엔드 및 데이터베이스 설계는 아래 문서를 참고하세요.
+
+-   **[➡️ 백엔드 및 데이터베이스 설계 문서](./ARCHITECTURE_BACKEND.md)
